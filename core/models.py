@@ -18,8 +18,6 @@ class Base(models.Model):
     class Meta:
         abstract = True
 
-    def __str__(self):
-        return "'{}' '{}' '{}'".format(self.criado, self.modificado, self.ativo)
 
 
 class Servico(Base):
@@ -41,7 +39,7 @@ class Servico(Base):
         verbose_name_plural = 'Serviços'
 
     def __str__(self):
-        return "'{}' '{}' '{}'".format(self.servico, self.descricao, self.icone)
+        return self.servico
 
 
 class Cargo(Base):
@@ -52,7 +50,7 @@ class Cargo(Base):
         verbose_name_plural = 'Cargos'
 
     def __str__(self):
-        return "'{}'".format(self.cargo)
+        return self.cargo
 
 
 class Funcionario(Base):
@@ -70,12 +68,10 @@ class Funcionario(Base):
         verbose_name_plural = 'Funcionários'
 
     def __str__(self):
-        return "'{}' '{}' '{}' '{}' '{}' '{}'".format(self.nome, self.cargo, self.bio, self.facebook, self.twitter,
-                                                      self.instagram)
+        return self.nome
 
 
 class Feature(Base):
-
     ICONE_CHOICES = (
         ('lni-cog', 'Engrenagem'),
         ('lni-rocket', 'Foguete'),
@@ -90,4 +86,4 @@ class Feature(Base):
     icone = models.CharField('Icone', max_length=20, choices=ICONE_CHOICES)
 
     def __str__(self):
-        return "'{}' '{}' '{}'".format(self.servico, self.descricao, self.icone)
+        return self.servico
