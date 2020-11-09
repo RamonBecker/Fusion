@@ -15,6 +15,7 @@ class IndexViewTestCase(TestCase):
 
     def test_form_valid(self):
         request = self.cliente.post(reverse_lazy('index'), data=self.dados)
+        
         self.assertEquals(request.status_code, 302) # Houve sucesso no redirecionamento
         # 302 é o código ou status que informa sobre o redirecionamento de uma página ou documento web.
 
